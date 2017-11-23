@@ -1,2 +1,1 @@
-# exemplo-git
-exemplo do uso do github
+Exercicios do primeiro e segundo semestre em C
