@@ -1,6 +1,5 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 typedef struct Elemento{
     int info;
@@ -156,7 +155,7 @@ void remover(fila *f){/*Menu 3*/
 void esvaziar(fila *f){/*Menu 4*/
     elemento *elementoDel, *proximoEleme;
 
-    if(!f->inicio == NULL){
+    if(!(f->inicio == NULL)){
         proximoEleme = f->inicio;
         while (proximoEleme != NULL){
             elementoDel = proximoEleme;
@@ -227,7 +226,7 @@ void vezes(fila *f){/*Menu 7*/
 }
 void duplicar(fila *f, fila *f2){/*Menu 8*/
     int tam=0, indice = 0, x = 0;
-    inicializar(&f2);
+    inicializar(f2);
 
     elemento *valores;
     valores = f->inicio;
@@ -244,7 +243,8 @@ void duplicar(fila *f, fila *f2){/*Menu 8*/
         indice++;
     }
     for(x = tam-1; x>=0; x--){
-        inserir(&f2, aux[x]);
+        inserir(f2, aux[x]);
     }
-    exibir(&f2);
+    exibir(f2);
 }
+
