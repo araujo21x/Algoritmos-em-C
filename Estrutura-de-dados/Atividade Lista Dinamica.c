@@ -7,6 +7,7 @@ typedef struct elemento{
 } Lista;
 
 typedef Lista* lista;
+int tamanho = 0;
 
 void menu();
 void inicializar(lista *l);
@@ -17,6 +18,7 @@ void MaiorQ(lista l);/*Menu 3*/
 void remover(lista *l);/*Menu 4*/
 void enderecoSalario(lista l);/*Menu 5*/
 void QuantSalario(lista l);/*Menu 6*/
+void ordenar(lista *l);/*Menu 7*/
 void esvaziar (lista *l);/*Menu 8*/
 void extremos(lista l);/*Menu 9*/
 
@@ -68,6 +70,11 @@ int main(){
                 QuantSalario(l);
             break;
 
+            case 7:
+                system("cls");
+                ordenar(&l);
+            break;
+
             case 8:
                 system("cls");
                 esvaziar(&l);
@@ -91,8 +98,9 @@ void menu(){
     printf("2 - EXIBIR A LISTA\n");
     printf("3 - CONTAR VALORES MAIORES QUE 'K'\n");
     printf("4 - REMOVER DO INiCIO\n");
-    printf("5 - MOSTRAR O ENDEREÇO DE MEMORIA QUE CONTEM UM DETERMINADO SALARIO\n");
+    printf("5 - MOSTRAR O ENDEREÃ‡O DE MEMORIA QUE CONTEM UM DETERMINADO SALARIO\n");
     printf("6 - CONTAR QUANTAS VEZES O SALARIO K APARECE NA LISTA\n");
+    printf("7 - ORDENAR A LISTA DE FORMA DECRESCENTE\n");
     printf("8 - ESVAZIAR A FILA\n");
     printf("9 - MOSTRAR O MAIOR E O MENOR SALARIO DA LISTA\n");
     printf("----------------------------------------------------------------\n");
@@ -118,6 +126,8 @@ void inserir(lista *l, float valor){/*Menu 1*/
     novo->salario = valor;
     novo->prox = *l;
     *l = novo;
+
+    tamanho++;
     system("cls");
 }
 void exibir(lista l){/*Menu 2*/
@@ -203,6 +213,23 @@ void QuantSalario(lista l){/*Menu 6*/
     system("pause");
     system("cls");
 }
+void ordenar(lista *l){/*Menu 7*/
+    float aux;
+    lista ordernar, auxiliar = *l;
+
+    while(auxiliar != NULL){
+        ordernar = auxiliar->prox;
+        while(ordernar != NULL){
+            if(auxiliar->salario > ordernar->salario){
+                aux = auxiliar->salario;
+                auxiliar->salario = ordernar->salario;
+                ordernar->salario = aux;
+            }
+            ordernar = ordernar->prox;
+        }
+        auxiliar = auxiliar->prox;
+    }
+}
 void esvaziar (lista *l){/*Menu 8*/
     lista deleta;
 
@@ -247,3 +274,4 @@ void extremos(lista l){
     system("cls");
 
 }
+
